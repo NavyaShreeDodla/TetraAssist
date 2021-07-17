@@ -16,4 +16,3 @@ For help getting started with Flutter, view our
 samples, guidance on mobile development, and a full API reference.
 =======
 # TetraAssist
->>>>>>> c500640b90e43f0b98a6e6329f997f96aabd1a8e
