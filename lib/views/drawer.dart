@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:tetra_assist/views/listH.dart';
 import 'package:tetra_assist/views/login.dart';
 
 import 'home.dart';
+import 'hospitals.dart';
 // import 'package:tetra_assist/widgets/widget.dart';
 class MainDrawer extends StatelessWidget {
   const MainDrawer({Key? key}) : super(key: key);
@@ -59,14 +61,24 @@ class MainDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-          leading: Icon(Icons.person),
-            title:Text('profile',style:TextStyle(fontSize: 18),),
+            leading: Icon(Icons.bed_rounded),
+            title:Text('Beds',style:TextStyle(fontSize: 18),),
+              onTap:() {
+                Navigator.push(context,
+                    new MaterialPageRoute(
+                        builder: (BuildContext context) => new listH())
+                );
+              },
           ),
-          ListTile(
-            leading: Icon(Icons.settings),
-            title:Text('settings',style:TextStyle(fontSize: 18),),
-            onTap: null,
-          ),
+          // ListTile(
+          // leading: Icon(Icons.person),
+          //   title:Text('profile',style:TextStyle(fontSize: 18),),
+          // ),
+          // ListTile(
+          //   leading: Icon(Icons.settings),
+          //   title:Text('settings',style:TextStyle(fontSize: 18),),
+          //   onTap: null,
+          // ),
           ListTile(
             leading: Icon(Icons.lock),
             title:Text('Logout',style:TextStyle(fontSize: 18),),

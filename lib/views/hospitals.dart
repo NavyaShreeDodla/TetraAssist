@@ -18,86 +18,96 @@ class _hospitalsState extends State<hospitals> {
     _ref=FirebaseDatabase.instance.reference().child('hospitals');
   }
   Widget _buildHospitals({required Map hospital}){
-      return Container(
-        margin: EdgeInsets.symmetric(vertical:10),
-        padding: EdgeInsets.all(10),
-        height:130,
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: Colors.blueAccent,
-            width:8
-          ),
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        child:Flexible(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
+      return SingleChildScrollView(
+        child: Card(
+          child: Container(
+            // color: Colors.grey,
+            margin: EdgeInsets.symmetric(vertical:10),
+            padding: EdgeInsets.all(10),
+            height:140,
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.cyan,
+                width:8
+              ),
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+            child:Flexible(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(
-                      Icons.home,
-                      // color: Theme.of(context).primarycolor,
-                      size:20,
+                  Row(
+                    children: [
+                      CircleAvatar(
+                        backgroundColor: Colors.grey,
+                        backgroundImage: AssetImage('assets/images/hicon.png'),
+                        radius: 15.0,
+                      ),
+                      // Icon(
+                      //     Icons.home,
+                      //     // color: Theme.of(context).primarycolor,
+                      //     size:20,
+                      // ),
+                      SizedBox(
+                      width: 6,
+                      ),
+                      Flexible(
+                        child: Text(
+                          hospital['Name']!=null?hospital['Name']:'',
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w600),
+                        ),
+                      ),
+                    ],
                   ),
                   SizedBox(
-                  width: 6,
+                    height:15,
                   ),
                   Flexible(
-                    child: Text(
-                      hospital['Name']!=null?hospital['Name']:'',
-                      style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w600),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.phone_iphone,
+                          color: Theme.of(context).accentColor,
+                          size: 20,
+                        ),
+                        SizedBox(
+                          width: 6,
+                        ),
+                        Text(
+                          hospital['number']!=null?hospital['number']:'',
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: Theme.of(context).accentColor,
+                              fontWeight: FontWeight.w600),
+                        ),
+                        SizedBox(width: 15),
+                        Text(
+                          'Available Beds',
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.deepOrange,
+                              fontWeight: FontWeight.w600),
+                        ),
+                        SizedBox(
+                          width: 6,
+                        ),
+                        Text(
+                          hospital['Total']!=null?hospital['Total']:'',
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.deepOrange,
+                              fontWeight: FontWeight.w600),
+                        ),
+                      ],
                     ),
-                  ),
+                  )
                 ],
               ),
-              SizedBox(
-                height:15,
-              ),
-              Flexible(
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.phone_iphone,
-                      color: Theme.of(context).accentColor,
-                      size: 20,
-                    ),
-                    SizedBox(
-                      width: 6,
-                    ),
-                    Text(
-                      hospital['number']!=null?hospital['number']:'',
-                      style: TextStyle(
-                          fontSize: 16,
-                          color: Theme.of(context).accentColor,
-                          fontWeight: FontWeight.w600),
-                    ),
-                    SizedBox(width: 15),
-                    Text(
-                      'Available Beds',
-                      style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.deepOrange,
-                          fontWeight: FontWeight.w600),
-                    ),
-                    SizedBox(
-                      width: 6,
-                    ),
-                    Text(
-                      hospital['Total']!=null?hospital['Total']:'',
-                      style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.deepOrange,
-                          fontWeight: FontWeight.w600),
-                    ),
-                  ],
-                ),
-              )
-            ],
+            ),
           ),
         ),
       );
